@@ -8,9 +8,7 @@ import {
 } from "react-router-dom";
 
 
-import Auth from '../pages/Auth'
 import Header from '../Layout/Header'
-import Form from '../components/FormData/Form'
 import Question from "../components/Question/Question";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";

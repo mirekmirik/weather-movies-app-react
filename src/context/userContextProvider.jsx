@@ -21,7 +21,6 @@ const UserContextProvider = (props) => {
 
     useEffect(() => {
         console.log({ user, pickedJenres })
-
     }, [user, pickedJenres])
 
 
@@ -38,25 +37,10 @@ const UserContextProvider = (props) => {
 
     const userContext = {
         user: user,
+        pickedJenres: pickedJenres,
         addUserHandler: addUserHandler,
         addJenresHandler: addJenresHandler
     }
-
-    // const [state, dispatchState] = useReducer(reducerFunc, defaultUserState)
-
-    // const addPickedJenresHandler = (jenres) => {
-    //     dispatchState({
-    //         type: "ADD_JENRE",
-    //         jenres: jenres
-    //     })
-    // }
-
-    // const addUserHandler = (userObject) => {
-    //     dispatchState({
-    //         type: "ADD_USER",
-    //         userObject: userObject
-    //     })
-    // }
 
 
     return (

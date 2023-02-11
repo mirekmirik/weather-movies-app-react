@@ -47,7 +47,6 @@ const QuestionItem = (props) => {
 
     return (
         <React.Fragment>
-
             {isModalOpen &&
                 <Modal onHideModal={hideModalHandler}>
                     <p>Вы не выбрали чекбокс!</p>

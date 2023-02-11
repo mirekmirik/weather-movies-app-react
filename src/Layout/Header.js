@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Header.module.css'
 import Button from '../UI/Button'
 
@@ -9,7 +10,9 @@ const Header = () => {
             </li> */}
             <li className="nav-item">
                 {/* <Button type="button" className="btn btn-primary mr-3">Войти</Button> */}
-                <Button type="button" style={{ "marginRight": "50px" }}>Войти</Button>
+                <Link to={'/auth/login'}>
+                    <Button type="button" style={{ "marginRight": "50px" }}>Войти</Button>
+                </Link>
 
             </li>
             {/* <li class="nav-item">

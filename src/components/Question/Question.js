@@ -3,7 +3,6 @@ import { Redirect, useHistory, useNavigate } from "react-router-dom";
 import Card from "../../UI/Card"
 import styles from './Question.module.css'
 import QuestionItem from "./QuestionItem"
-import Form from "../FormData/Form"
 import clearWeatherImg from '../../assets/img/Clear-weather.jpg'
 import cloudsWeatherImg from '../../assets/img/Clouds-weather.jpg'
 import drizzleWeatherImg from '../../assets/img/Drizzle-weather.jpg'
@@ -54,8 +53,9 @@ const QUESTION_DATA = [
 
 const Question = (props) => {
     const navigate = useNavigate()
-    // const history = useHistory()
     const ctx = useContext(userContext)
+
+    // console.log(ctx)
 
     const [questionIdx, setQuestionIdx] = useState(0)
 
