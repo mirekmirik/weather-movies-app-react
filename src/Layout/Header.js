@@ -1,16 +1,16 @@
 import styles from './Header.module.css'
-
+import Button from '../UI/Button'
 
 const Header = () => {
     return (
-        <ul className="nav justify-content-end bg-info
-
-        ">
+        <ul className={`nav justify-content-end ${styles['nav']}`}>
             {/* <li class="nav-item">
                 <a class="nav-link active" href="#">Active</a>
             </li> */}
             <li className="nav-item">
-                <button type="button" className="btn btn-primary mr-3">Войти</button>
+                {/* <Button type="button" className="btn btn-primary mr-3">Войти</Button> */}
+                <Button type="button" style={{ "marginRight": "50px" }}>Войти</Button>
+
             </li>
             {/* <li class="nav-item">
                 <a class="nav-link" href="#"></a>
