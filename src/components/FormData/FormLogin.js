@@ -1,14 +1,23 @@
-import React, { useState, useRef, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useRef, useContext, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import userContext from '../../context/user-context'
 import Button from '../../UI/Button'
 import styles from './Form.module.css'
 import Modal from '../Modal/Modal'
-import { getUsers } from '../../api/users'
+import { getUsers } from '../../api/users/users'
+import { useAuth } from '../../context/auth'
 
 
 const FormLogin = (props) => {
-    // const ctx = useContext(userContext)
+
+    const navigate = useNavigate()
+    const auth = useAuth()
+
+    useEffect(() => {
+        if (auth.user) {
+            navigate('/profile')
+        }
+    })
 
 
     const [httpError, setHttpError] = useState()
@@ -25,8 +34,10 @@ const FormLogin = (props) => {
             if (!findLogin) {
                 throw new Error('Вы неправильно ввели данные')
             }
-            console.log(findLogin)
-            alert('Вы успешно вошли в аккаунт!')
+            // userCtx.addUserHandler(findLogin)
+            console.log('findLogin', findLogin)
+            auth.login(findLogin)
+            navigate('/profile')
         } catch (err) {
             setHttpError(err.message)
         }

@@ -4,13 +4,16 @@ import Modal from "./components/Modal/Modal";
 import UserContextProvider from "./context/userContextProvider";
 import RoutesComponent from "./routes/Routes";
 import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/auth";
 
 function App() {
   return (
-    <UserContextProvider>
-      <Header/>
-      <RoutesComponent />
-    </UserContextProvider>
+    <AuthProvider>
+      <UserContextProvider>
+        <Header />
+        <RoutesComponent />
+      </UserContextProvider>
+    </AuthProvider>
   );
 }
 

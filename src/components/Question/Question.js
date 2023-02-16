@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Redirect, useHistory, useNavigate } from "react-router-dom";
 import Card from "../../UI/Card"
 import styles from './Question.module.css'
@@ -10,7 +10,10 @@ import fogWeatherImg from '../../assets/img/Fog-weather.jpg'
 import rainWeatherImg from '../../assets/img/Rain-weather.jpg'
 import snowWeatherImg from '../../assets/img/Snow-weather.jpg'
 import userContext from "../../context/user-context"
-
+import { getWeather } from "../../api/weather/weather";
+import uaJson from '../../json-data/ua.json'
+import { useAuth } from "../../context/auth";
+// use
 
 
 
@@ -54,8 +57,14 @@ const QUESTION_DATA = [
 const Question = (props) => {
     const navigate = useNavigate()
     const ctx = useContext(userContext)
+    const auth = useAuth()
 
-    // console.log(ctx)
+    useEffect(() => {
+        if (auth.user) {
+            navigate('/profile')
+        }
+    }, [auth])
+
 
     const [questionIdx, setQuestionIdx] = useState(0)
 
@@ -87,11 +96,7 @@ const Question = (props) => {
     let content;
 
     if (questionIdx >= QUESTION_DATA.length) {
-        // return redirect('/auth')
-        // history.push('/auth')
         navigate('/auth/register')
-        // return <Redirect to="/auth" />
-        // content = <Form />
     }
 
     return (

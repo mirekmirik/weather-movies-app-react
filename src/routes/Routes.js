@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
     Switch,
@@ -7,11 +6,11 @@ import {
     Link
 } from "react-router-dom";
 
-
-import Header from '../Layout/Header'
 import Question from "../components/Question/Question";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
+import { ProfilePage } from "../pages/Profile";
+import { RequireAuth } from "../context/RequireAuth";
 
 const RoutesComponent = () => (
     <Routes>
@@ -19,8 +18,10 @@ const RoutesComponent = () => (
         <Route path="/auth">
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
-
         </Route>
+        <Route path='/profile' element={<RequireAuth>
+            <ProfilePage />
+        </RequireAuth>} />
         {/* <Route path="/login" element={<Auth />} /> */}
 
     </Routes>

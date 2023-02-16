@@ -38,3 +38,38 @@
 .text-error.centered {
     text-align: center;
 }
+
+
+
+.input-dropdown-cities {
+    margin-bottom: 5px;
+}
+
+.input-dropdown-cities:focus~ul {
+    display: block;
+}
+
+.input-dropdown-cities~ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px 5px;
+    width: 200px;
+    border: 1px solid rgb(56, 99, 56);
+    background-color: rgb(61, 45, 114);
+    height: 100px;
+    overflow: auto;
+    display: none;
+    border-radius: 10px;
+}
+
+.input-dropdown-cities~ul li {
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.input-dropdown-cities~ul li:hover {
+    background:rgb(45, 114, 99)
+}

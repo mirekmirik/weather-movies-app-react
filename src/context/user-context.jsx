@@ -2,9 +2,14 @@ import React from "react";
 
 const userContext = React.createContext({
     user: {},
-    pickedJenres: [],
+    // pickedJenres: [],
+    // weather: '',
+    // jenresByWeather: [],
     addUserHandler: (inputObject) => { },
-    addJenresHandler: (jenre) => { }
+    addJenresHandler: (jenre) => { },
+    addWeatherHandler: (weather) => { },
+    addJenresByWeatherHandler: (jenres) => { },
+    resetValues: () => { }
     //   setPickedJenres: () => {}
     //   totalAmount: 0,
     //   addItem: (item) => {},

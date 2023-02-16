@@ -1,45 +1,67 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useCallback, useEffect, useReducer, useState } from 'react'
 import UserContext from './user-context'
 
-// const defaultUserState = {
-//     user: {},
-//     pickedJenres: [],
-// }
-
-
-// const reducerFunc = (prevState, action) => {
-//     if(action.type === "ADD_USER") {
-
-//     }
-
-//     return defaultUserState
-// }
 
 const UserContextProvider = (props) => {
-    const [user, setUser] = useState('')
-    const [pickedJenres, setPickedJenres] = useState([])
+    const [user, setUser] = useState({})
+
+    const innerFunction = useCallback(() => {
+        console.log('userCtx', user)
+    });
 
     useEffect(() => {
-        console.log({ user, pickedJenres })
-    }, [user, pickedJenres])
+        innerFunction()
+    }, [innerFunction])
 
 
+
+    const addJenresByWeatherHandler = (jenres) => {
+        setUser((prevUser) => {
+            return {
+                ...prevUser,
+                jenres
+            };
+        });
+    }
+
+    const resetValues = () => {
+        setUser({})
+    }
+
+
+    const addWeatherHandler = (weather) => {
+        setUser((prevUser) => {
+            console.log({ ...prevUser })
+            return {
+                ...prevUser,
+                weather: weather
+            };
+        });
+    }
 
     const addUserHandler = (inputObject) => {
         setUser(inputObject)
     }
 
     const addJenresHandler = (jenre) => {
-        setPickedJenres((prevState) => {
-            return [...prevState, jenre]
-        })
+        setUser((prevUser) => {
+            let newPickedJenres;
+            if (Array.isArray(prevUser.pickedJenres)) {
+                newPickedJenres = [...prevUser.pickedJenres, jenre];
+            } else {
+                newPickedJenres = [jenre];
+            }
+            return { ...prevUser, pickedJenres: newPickedJenres };
+        });
     }
 
     const userContext = {
         user: user,
-        pickedJenres: pickedJenres,
         addUserHandler: addUserHandler,
-        addJenresHandler: addJenresHandler
+        addJenresHandler: addJenresHandler,
+        addJenresByWeatherHandler,
+        addWeatherHandler,
+        resetValues
     }
 
 
